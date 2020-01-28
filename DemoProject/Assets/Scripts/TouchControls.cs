@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TouchControls : MonoBehaviour
 {
-
+    public PlayerMovement movement;
 
     void Start()
     {
