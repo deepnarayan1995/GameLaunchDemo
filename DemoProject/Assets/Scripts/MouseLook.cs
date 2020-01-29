@@ -9,6 +9,9 @@ public class MouseLook : MonoBehaviour
     public Transform playerbody;
     float xRotation;
 
+    [HideInInspector]
+    public Vector2 LookAxis;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -16,8 +19,8 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        mousex = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        mousey = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        mousex = LookAxis.x * sensitivity;
+        mousey = LookAxis.y * sensitivity;
 
         playerbody.Rotate(Vector3.up * mousex);
         xRotation -= mousey;
