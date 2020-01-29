@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class MyTouchScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public FixedJoystick moveJoystick;
+    public FixedButton jumpButton;
+    public FixedTouchField touchField;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        var fps = GetComponent<PlayerMovement>();
+        var fpslook = GetComponentInChildren<MouseLook>();
+
+        fps.RunAxis = moveJoystick.Direction;
+        fps.JumpAxis = jumpButton.pressed;
+        fpslook.LookAxis = touchField.touchDistance;
     }
 }
