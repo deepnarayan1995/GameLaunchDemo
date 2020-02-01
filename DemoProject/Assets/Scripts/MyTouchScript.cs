@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MyTouchScript : MonoBehaviour
 {
-    public FixedJoystick moveJoystick;
+    public VirtualJoystick moveJoystick;
     public FixedButton jumpButton;
     public FixedTouchField touchField;
 
@@ -18,7 +18,7 @@ public class MyTouchScript : MonoBehaviour
         var fps = GetComponent<PlayerMovement>();
         var fpslook = GetComponentInChildren<MouseLook>();
 
-        fps.RunAxis = moveJoystick.Direction;
+        fps.RunAxis = moveJoystick.InputDirection;
         fps.JumpAxis = jumpButton.pressed;
         fpslook.LookAxis = touchField.touchDistance;
     }

@@ -14,6 +14,14 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 RunAxis;
     public bool JumpAxis;
 
+    public VirtualJoystick movejoystick;
+    private Transform camTransform;
+
+    void Start()
+    {
+        camTransform = Camera.main.transform;
+    }
+
 
     void Update()
     {
@@ -22,11 +30,19 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = 0f;
         }
 
-        xval = RunAxis.x;
-        zval = RunAxis.y;//this is z value
+        Vector3 dir = Vector3.zero;
+        dir = movejoystick.InputDirection;
 
-        Vector3 moving = transform.right * xval + transform.forward * zval;
-        controller.Move(moving * speed * Time.deltaTime);
+        Vector3 newDir = camTransform.TransformDirection(dir);
+        newDir = new Vector3(newDir.x, 0, newDir.z);
+        newDir = newDir.normalized * dir.magnitude;
+        controller.Move(newDir * speed * Time.deltaTime);
+
+        //xval = RunAxis.x;
+        //zval = RunAxis.y;//this is z value
+
+        //Vector3 moving = transform.right * xval + transform.forward * zval;
+        //controller.Move(moving * speed * Time.deltaTime);
                
 
         velocity.y -= gravity * Time.deltaTime;
