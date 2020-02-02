@@ -25,9 +25,10 @@ public class FixedTouchField : MonoBehaviour, IPointerUpHandler, IPointerDownHan
 
     void Update()
     {
+
         if(pressed)
         {
-            if(PntrId > 0 && PntrId < Input.touches.Length)
+            if (PntrId > 0 && PntrId < Input.touches.Length)
             {
                 touchDistance = Input.touches[PntrId].position - PntrOld;
                 PntrOld = Input.touches[PntrId].position;
