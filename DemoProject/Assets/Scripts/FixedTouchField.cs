@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class FixedTouchField : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
@@ -17,6 +18,8 @@ public class FixedTouchField : MonoBehaviour, IPointerUpHandler, IPointerDownHan
     [HideInInspector]
     public bool pressed;
 
+    public Image panel;
+
 
     void Start()
     {
@@ -25,7 +28,6 @@ public class FixedTouchField : MonoBehaviour, IPointerUpHandler, IPointerDownHan
 
     void Update()
     {
-
         if(pressed)
         {
             if (PntrId > 0 && PntrId < Input.touches.Length)
